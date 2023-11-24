@@ -34,7 +34,7 @@ btn2 = tk.Button(buttonframe, text="2", font=("Arial", 16))
 btn2.grid(row=0, column=1, sticky=tk.W + tk.E)
 
 # fill="x" fyller i x riktning
-buttonframe.pack(fil="x")
+buttonframe.pack(fill="x")
 
 
 # to open a window
