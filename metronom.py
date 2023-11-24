@@ -1,31 +1,23 @@
-# from playsound import playsound
+import winsound
+import time
 
-# playsound("C:\Users\viggo.sorensen1\Desktop\Python\Metronom\click_button.mp3")
+# while True:
+#     winsound.PlaySound("click_button.wav", winsound.SND_FILENAME)
 
-# import pygame
+freq2 = 440
+freq1 = 600
+duration = 900
+beat = 0
+bpm = time.sleep(0.5)
 
-# pygame.init()
-# pygame.mixer.music.load(
-#     "C:\\Users\\viggo.sorensen1\\Desktop\\Python\\Metronom\\click_button.mp3"
-# )
-# pygame.mixer.music.play()
+while True:
+    beat += 1
+    if beat == 1:
+        winsound.Beep(freq1, duration)
+        bpm
+    else:
+        winsound.Beep(freq2, duration)
+        bpm
 
-# pygame.event.wait()
-
-# import simpleaudio as sa
-
-# wave_obj = sa.WaveObject.from_wave_file(
-#     "Users\\viggo.sorensen1\\Desktop\\Python\\Metronom\\click_button.mp3"
-# )
-# play_obj = wave_obj.play()
-
-# play_obj.wait_done()
-
-
-# from pydub import AudioSegment
-# from pydub.playback import play
-
-# sound = AudioSegment.from_file(
-#     "C:\\Users\\viggo.sorensen1\\Desktop\\Python\\Metronom\\click_button.mp3"
-# )
-# play(sound)
+    if beat == 4:
+        beat = 0
