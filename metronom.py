@@ -22,10 +22,10 @@
 # play_obj.wait_done()
 
 
-from pydub import AudioSegment
-from pydub.playback import play
+# from pydub import AudioSegment
+# from pydub.playback import play
 
-sound = AudioSegment.from_file(
-    "C:\\Users\\viggo.sorensen1\\Desktop\\Python\\Metronom\\click_button.mp3"
-)
-play(sound)
+# sound = AudioSegment.from_file(
+#     "C:\\Users\\viggo.sorensen1\\Desktop\\Python\\Metronom\\click_button.mp3"
+# )
+# play(sound)
