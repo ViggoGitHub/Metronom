@@ -46,7 +46,7 @@ while True:
         time.sleep(bpm)
     else:
         winsound.Beep(freq2, duration)
-        timetsleep(bpm)
+        time.sleep(bpm)
 
     if beat == 4:
         beat = 0
