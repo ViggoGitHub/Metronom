@@ -18,6 +18,7 @@ class MyGUI:
         self.label2.pack()
 
         self.entry = tk.Entry(self.root)
+        self.bpm1 = int(self.entry.get())
         self.entry.pack()
 
         self.buttonframe = tk.Frame(self.root)
@@ -47,16 +48,16 @@ class MyGUI:
         self.freq1 = 600
         self.duration = 900
         self.beat = 0
-        self.bpm = 0.5
+        self.bpm2 = 60 / self.bpm1
 
         while True:
             self.beat += 1
             if self.beat == 1:
                 winsound.Beep(self.freq1, self.duration)
-                time.sleep(self.bpm)
+                time.sleep(self.bpm2)
             else:
                 winsound.Beep(self.freq2, self.duration)
-                time.sleep(self.bpm)
+                time.sleep(self.bpm2)
 
             if self.beat == 4:
                 self.beat = 0
