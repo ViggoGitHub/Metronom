@@ -2,51 +2,64 @@ import winsound
 import time
 import tkinter as tk
 
-root = tk.Tk()
 
-root.geometry("900x500")
-root.title("Metronome")
+class MyGUI:
+    def __init__(self):
+        self.root = tk.Tk()
 
-label = tk.Label(root, text="Metronome", font=("Arial", 18))
-# padx och pady är padding för x och y axel
-label.pack(padx=100, pady=20)
+        self.root.geometry("900x500")
+        self.root.title("Metronome")
 
-label2 = tk.Label(root, text="BPM", font=("Arial", 16))
-label2.pack()
+        self.label = tk.Label(self.root, text="Metronome", font=("Arial", 18))
+        # padx och pady är padding för x och y axel
+        self.label.pack(padx=100, pady=20)
 
-entry = tk.Entry(root)
-entry.pack()
+        self.label2 = tk.Label(self.root, text="BPM", font=("Arial", 16))
+        self.label2.pack()
 
-buttonframe = tk.Frame(root)
+        self.entry = tk.Entry(self.root)
+        self.entry.pack()
 
-buttonframe.columnconfigure(0, weight=1)
-buttonframe.columnconfigure(1, weight=1)
+        self.buttonframe = tk.Frame(self.root)
 
-start = tk.Button(buttonframe, text="Start", font=("Arial", 12))
-start.grid(row=0, column=0, sticky=tk.W + tk.E)
+        self.buttonframe.columnconfigure(0, weight=1)
+        self.buttonframe.columnconfigure(1, weight=1)
 
-stop = tk.Button(buttonframe, text="Stop", font=("Arial", 12))
-stop.grid(row=0, column=1, sticky=tk.W + tk.E)
+        self.start = tk.Button(
+            self.buttonframe,
+            text="Start",
+            font=("Arial", 12),
+            command=self.start_metronome,
+        )
+        self.start.grid(row=0, column=0, sticky=tk.W + tk.E)
 
-buttonframe.pack(fill="x", pady=15)
+        self.stop = tk.Button(self.buttonframe, text="Stop", font=("Arial", 12))
+        self.stop.grid(row=0, column=1, sticky=tk.W + tk.E)
 
-# to open a window
-root.mainloop()
+        self.buttonframe.pack(fill="x", pady=30)
 
-freq2 = 440
-freq1 = 600
-duration = 900
-beat = 0
-bpm = 0.5
+        # to open a window
+        self.root.mainloop()
 
-while True:
-    beat += 1
-    if beat == 1:
-        winsound.Beep(freq1, duration)
-        time.sleep(bpm)
-    else:
-        winsound.Beep(freq2, duration)
-        time.sleep(bpm)
+    def start_metronome(self):
+        print("Hello World!")
+        self.freq2 = 440
+        self.freq1 = 600
+        self.duration = 900
+        self.beat = 0
+        self.bpm = 0.5
 
-    if beat == 4:
-        beat = 0
+        while True:
+            self.beat += 1
+            if self.beat == 1:
+                winsound.Beep(self.freq1, self.duration)
+                time.sleep(self.bpm)
+            else:
+                winsound.Beep(self.freq2, self.duration)
+                time.sleep(self.bpm)
+
+            if self.beat == 4:
+                self.beat = 0
+
+
+MyGUI()

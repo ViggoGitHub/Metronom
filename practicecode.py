@@ -36,6 +36,9 @@ btn2.grid(row=0, column=1, sticky=tk.W + tk.E)
 # fill="x" fyller i x riktning
 buttonframe.pack(fill="x")
 
+# Själv välja vart en knapp ska ligga
+anotherbtn = tk.Button(root, text="Test")
+anotherbtn.place(x=400, y=400, height=50, width=100)
 
 # to open a window
 root.mainloop()
