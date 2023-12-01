@@ -7,7 +7,7 @@ class MyGUI:
     def __init__(self):
         self.root = tk.Tk()
 
-        self.root.geometry("900x500")
+        self.root.geometry("400x400")
         self.root.title("Metronome")
 
         self.label = tk.Label(self.root, text="Metronome", font=("Arial", 18))
@@ -17,9 +17,13 @@ class MyGUI:
         self.label2 = tk.Label(self.root, text="BPM", font=("Arial", 16))
         self.label2.pack()
 
+        def bpm_entry():
+            self.bpm1 = int(self.entry.get())
+
         self.entry = tk.Entry(self.root)
-        self.bpm1 = int(self.entry.get())
         self.entry.pack()
+        self.enter = tk.Button(self.root, text="Ange", command=bpm_entry)
+        self.enter.pack(pady=10)
 
         self.buttonframe = tk.Frame(self.root)
 
@@ -42,7 +46,7 @@ class MyGUI:
         # to open a window
         self.root.mainloop()
 
-    def start_metronome(self):
+    def start_metronome(self, stop):
         print("Hello World!")
         self.freq2 = 440
         self.freq1 = 600
@@ -50,7 +54,7 @@ class MyGUI:
         self.beat = 0
         self.bpm2 = 60 / self.bpm1
 
-        while True:
+        while not stop:
             self.beat += 1
             if self.beat == 1:
                 winsound.Beep(self.freq1, self.duration)
