@@ -4,6 +4,26 @@ import tkinter as tk
 
 
 class MyGUI:
+    def start_metronome(self):
+        print("Hello World!")
+        self.freq2 = 440
+        self.freq1 = 600
+        self.duration = 900
+        self.beat = 0
+        self.bpm2 = 60 / self.bpm1
+
+        while True:
+            self.beat += 1
+            if self.beat == 1:
+                winsound.Beep(self.freq1, self.duration)
+                time.sleep(self.bpm2)
+            else:
+                winsound.Beep(self.freq2, self.duration)
+                time.sleep(self.bpm2)
+
+            if self.beat == 4:
+                self.beat = 0
+
     def __init__(self):
         self.root = tk.Tk()
 
@@ -45,26 +65,6 @@ class MyGUI:
 
         # to open a window
         self.root.mainloop()
-
-    def start_metronome(self, stop):
-        print("Hello World!")
-        self.freq2 = 440
-        self.freq1 = 600
-        self.duration = 900
-        self.beat = 0
-        self.bpm2 = 60 / self.bpm1
-
-        while not stop:
-            self.beat += 1
-            if self.beat == 1:
-                winsound.Beep(self.freq1, self.duration)
-                time.sleep(self.bpm2)
-            else:
-                winsound.Beep(self.freq2, self.duration)
-                time.sleep(self.bpm2)
-
-            if self.beat == 4:
-                self.beat = 0
 
 
 MyGUI()
