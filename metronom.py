@@ -1,6 +1,7 @@
 import winsound
 import time
 import tkinter as tk
+import threading
 
 
 class MyGUI:
@@ -11,8 +12,14 @@ class MyGUI:
         self.duration = 900
         self.beat = 0
         self.bpm2 = 60 / self.bpm1
+        self.running = True
 
-        while True:
+        # Starting the metronome in a diferent thread
+        self.metronome_thread = threading.Thread(target=self.playing_metronome)
+        self.metronome_thread.start()
+
+    def playing_metronome(self):
+        while self.running:
             self.beat += 1
             if self.beat == 1:
                 winsound.Beep(self.freq1, self.duration)
@@ -23,6 +30,11 @@ class MyGUI:
 
             if self.beat == 4:
                 self.beat = 0
+
+    def stop_metronome(self):
+        self.running = False
+        if self.metronome_thread.is_alive():
+            self.metronome_thread.join()
 
     def __init__(self):
         self.root = tk.Tk()
@@ -58,8 +70,15 @@ class MyGUI:
         )
         self.start.grid(row=0, column=0, sticky=tk.W + tk.E)
 
-        self.stop = tk.Button(self.buttonframe, text="Stop", font=("Arial", 12))
+        self.stop = tk.Button(
+            self.buttonframe,
+            text="Stop",
+            font=("Arial", 12),
+            command=self.stop_metronome,
+        )
         self.stop.grid(row=0, column=1, sticky=tk.W + tk.E)
+
+        self.running = False
 
         self.buttonframe.pack(fill="x", pady=30)
 
