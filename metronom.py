@@ -51,9 +51,12 @@ class MyGUI:
 
         def bpm_entry():
             self.bpm1 = int(self.entry.get())
+            self.bpm_label = tk.Label(self.root, text="BPM set at " + str(self.bpm1))
+            self.bpm_label.pack()
 
         self.entry = tk.Entry(self.root)
         self.entry.pack()
+
         self.enter = tk.Button(self.root, text="Enter", command=bpm_entry)
         self.enter.pack(pady=10)
 
