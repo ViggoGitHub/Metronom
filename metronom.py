@@ -54,7 +54,7 @@ class MyGUI:
 
         self.entry = tk.Entry(self.root)
         self.entry.pack()
-        self.enter = tk.Button(self.root, text="Ange", command=bpm_entry)
+        self.enter = tk.Button(self.root, text="Enter", command=bpm_entry)
         self.enter.pack(pady=10)
 
         self.buttonframe = tk.Frame(self.root)
