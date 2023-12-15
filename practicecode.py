@@ -42,3 +42,18 @@ anotherbtn.place(x=400, y=400, height=50, width=100)
 
 # to open a window
 root.mainloop()
+
+try:
+    print(x)
+except:
+    print("An error has occured!")
+
+try:
+    self.start = tk.Button(
+        self.buttonframe,
+        text="Start",
+        font=("Arial", 12),
+        command=self.start_metronome,
+    )
+except:
+    self.error = tk.Label(self.root, text="You must enter a BPM")
